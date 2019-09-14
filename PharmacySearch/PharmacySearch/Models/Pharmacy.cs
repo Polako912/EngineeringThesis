@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace PharmacySearch.Models
 {
@@ -12,6 +10,6 @@ namespace PharmacySearch.Models
         public string Street { get; set; }
         public string City { get; set; }
         public IEnumerable<Medicine> Medicines { get; set; }
-        public string OpenHours { get; set; }
+        public DateTime OpenHours { get; set; }
     }
 }
