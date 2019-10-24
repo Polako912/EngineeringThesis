@@ -1,5 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using PharmacySearch.Models;
 
 namespace PharmacySearch.Controllers
 {
@@ -7,15 +12,32 @@ namespace PharmacySearch.Controllers
     [ApiController]
     public class MedicineController : Controller
     {
-        [HttpGet]
-        public Task<IActionResult> GetMedicineByName([FromQuery] string name)
+        private readonly PharmacyDBContext _context;
+
+        public MedicineController(PharmacyDBContext context)
         {
-            return Ok();
+            _context = context;
         }
 
-        public Task<IActionResult> GetMedicineByAvailability([FromQuery] bool isAvailable)
+        [HttpGet]
+        public async Task<IActionResult> GetMedicines()
         {
-            return Ok();
+            var medicine = await _context.Medicine
+                .OrderBy(m => m.MedicineName)
+                .ToListAsync();
+
+            return Ok(medicine);
         }
+
+        //[HttpGet]
+        //public ActionResult<IEnumerable<Medicine>> GetMedicineByName([FromRoute] string name)
+        //{
+        //    return Ok();
+        //}
+
+        //public ActionResult<IEnumerable<Medicine>> GetMedicineByAvailability([FromRoute] bool isAvailable)
+        //{
+        //    return Ok();
+        //}
     }
 }

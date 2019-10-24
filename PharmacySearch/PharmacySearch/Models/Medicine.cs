@@ -1,12 +1,23 @@
-﻿namespace PharmacySearch.Models
+﻿using System;
+using System.Collections.Generic;
+
+namespace PharmacySearch.Models
 {
-    public class Medicine
+    public partial class Medicine
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string  Type { get; set; }
-        public bool IsAvailable { get; set; }
-        public string  FullName { get; set; }
-        public Pharmacy Pharmacy { get; set; }
+        public Medicine()
+        {
+            Pharmacy = new HashSet<Pharmacy>();
+        }
+
+        public int MedicineId { get; set; }
+        public string MedicineName { get; set; }
+        public string MedicineType { get; set; }
+        public string IsAvailable { get; set; }
+        public string MedicineFullName { get; set; }
+        public string Prescription { get; set; }
+        public string MedicineCapacity { get; set; }
+
+        public virtual ICollection<Pharmacy> Pharmacy { get; set; }
     }
 }

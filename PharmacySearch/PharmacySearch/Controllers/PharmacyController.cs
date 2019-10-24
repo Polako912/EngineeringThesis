@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
 namespace PharmacySearch.Controllers
@@ -7,16 +8,16 @@ namespace PharmacySearch.Controllers
     [ApiController]
     public class PharmacyController : ControllerBase
     {
-        [HttpGet]
-        public Task<IActionResult> GetPharmacyByName([FromQuery] string name)
-        {
-            return Ok();
-        }
+        //[HttpGet]
+        //public ActionResult<IEnumerable<Pharmacy>> GetPharmacyByName([FromRoute] string name)
+        //{
+        //    return new List<Pharmacy>();
+        //}
 
-        [HttpGet]
-        public Task<IActionResult> GetPharmacyByCity([FromQuery] string city)
-        {
-            return Ok();
-        }
+        //[HttpGet]
+        //public ActionResult<IEnumerable<Pharmacy>> GetPharmacyByCity([FromRoute] string city)
+        //{
+        //    return new List<Pharmacy>();
+        //}
     }
 }
