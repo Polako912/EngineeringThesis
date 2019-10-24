@@ -18,14 +18,6 @@ namespace PharmacySearch.Models
         public DbSet<Medicine> Medicine { get; set; }
         public DbSet<Pharmacy> Pharmacy { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                
-            }
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("ProductVersion", "2.2.6-servicing-10079");

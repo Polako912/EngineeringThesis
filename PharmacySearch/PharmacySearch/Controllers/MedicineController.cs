@@ -28,16 +28,5 @@ namespace PharmacySearch.Controllers
 
             return Ok(medicine);
         }
-
-        //[HttpGet]
-        //public ActionResult<IEnumerable<Medicine>> GetMedicineByName([FromRoute] string name)
-        //{
-        //    return Ok();
-        //}
-
-        //public ActionResult<IEnumerable<Medicine>> GetMedicineByAvailability([FromRoute] bool isAvailable)
-        //{
-        //    return Ok();
-        //}
     }
 }
