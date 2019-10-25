@@ -1,8 +1,7 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore;
+using PharmacySearch.Models;
 
-namespace PharmacySearch.Models
+namespace PharmacySearch.Data
 {
     public partial class PharmacyDBContext : DbContext
     {
@@ -74,7 +73,7 @@ namespace PharmacySearch.Models
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.FkMedicine)
-                    .WithMany(p => p.Pharmacy)
+                    .WithMany(p => p.Pharmacies)
                     .HasForeignKey(d => d.FkMedicineId)
                     .HasConstraintName("FK__Pharmacy__Fk_Med__5DCAEF64");
             });

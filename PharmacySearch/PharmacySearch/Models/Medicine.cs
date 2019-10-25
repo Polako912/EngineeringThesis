@@ -7,7 +7,7 @@ namespace PharmacySearch.Models
     {
         public Medicine()
         {
-            Pharmacy = new HashSet<Pharmacy>();
+            Pharmacies = new HashSet<Pharmacy>();
         }
 
         public int MedicineId { get; set; }
@@ -18,6 +18,6 @@ namespace PharmacySearch.Models
         public string Prescription { get; set; }
         public string MedicineCapacity { get; set; }
 
-        public virtual ICollection<Pharmacy> Pharmacy { get; set; }
+        public virtual ICollection<Pharmacy> Pharmacies { get; set; }
     }
 }
