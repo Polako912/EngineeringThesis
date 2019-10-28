@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace PharmacySearch.Models
 {
-    public partial class Medicine
+    public class Medicine
     {
         public Medicine()
         {
@@ -18,6 +18,6 @@ namespace PharmacySearch.Models
         public string Prescription { get; set; }
         public string MedicineCapacity { get; set; }
 
-        public virtual ICollection<Pharmacy> Pharmacies { get; set; }
+        public ICollection<Pharmacy> Pharmacies { get; set; }
     }
 }

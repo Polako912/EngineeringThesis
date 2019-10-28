@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace PharmacySearch.Models
 {
-    public partial class Pharmacy
+    public class Pharmacy
     {
         public int PharmacyId { get; set; }
         public string PharmacyName { get; set; }

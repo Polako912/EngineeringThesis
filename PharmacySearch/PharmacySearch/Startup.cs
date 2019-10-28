@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PharmacySearch.Data;
+using PharmacySearch.Mappers;
 using PharmacySearch.Models;
 
 namespace PharmacySearch
@@ -34,6 +35,8 @@ namespace PharmacySearch
             {
                 configuration.RootPath = "ClientApp/build";
             });
+
+            services.AddTransient<DtoMapper>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
