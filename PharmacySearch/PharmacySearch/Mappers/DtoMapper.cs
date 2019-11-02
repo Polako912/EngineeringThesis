@@ -28,5 +28,17 @@ namespace PharmacySearch.Mappers
 
             }).ToList();
         }
+
+        public List<PharmacyDto> GetPharmacyDto(List<Pharmacy> pharmacy)
+        {
+            return pharmacy?.Select(x => new PharmacyDto
+            {
+                PharmacyDtoName = x.PharmacyName,
+                PharmacyDtoAddress = x.PharmacyAddress,
+                PharmacyDtoCity = x.PharmacyCity,
+                OpenFromDto = x.OpenFrom,
+                OpenToDto = x.OpenTo
+            }).ToList();
+        }
     }
 }
