@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './NavMenu.css';
 
 export default class NavMenu extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     this.toggle = this.toggle.bind(this);
@@ -12,12 +12,12 @@ export default class NavMenu extends React.Component {
       isOpen: false
     };
   }
-  toggle () {
+  toggle() {
     this.setState({
       isOpen: !this.state.isOpen
     });
   }
-  render () {
+  render() {
     return (
       <header>
         <Navbar className="navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3" light >
@@ -34,6 +34,9 @@ export default class NavMenu extends React.Component {
                 </NavItem>
                 <NavItem>
                   <NavLink tag={Link} className="text-dark" to="/fetch-data">Fetch data</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/search">Pharmacy Search</NavLink>
                 </NavItem>
               </ul>
             </Collapse>
