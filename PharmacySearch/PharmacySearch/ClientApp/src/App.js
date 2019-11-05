@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Counter from './components/Counter';
 import FetchData from './components/FetchData';
 import Search from './components/Search';
+import SearchPage from './components/SearchResult';
 
 export default () => (
   <Layout>
@@ -12,5 +13,6 @@ export default () => (
     <Route path='/counter' component={Counter} />
     <Route path='/fetch-data/:startDateIndex?' component={FetchData} />
     <Route path='/search' component={Search} />
+    <Route path='/searchPage' component={SearchPage} />
   </Layout>
 );
