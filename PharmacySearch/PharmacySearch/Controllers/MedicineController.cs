@@ -42,7 +42,7 @@ namespace PharmacySearch.Controllers
             {
                 var medicine = _context.Medicine
                     .Select(m => m)
-                    .Where(m => m.MedicineName == name && m.Pharmacies.Any(x => x.FkMedicineId == m.MedicineId))
+                    .Where(m => m.MedicineName.Contains(name) && m.Pharmacies.Any(x => x.FkMedicineId == m.MedicineId))
                     .Include(m => m.Pharmacies)
                     .ToList();
 
