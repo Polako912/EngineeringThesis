@@ -33,7 +33,7 @@ namespace PharmacySearch.Controllers
         }
 
         [HttpGet("{name}")]
-        public async Task<IActionResult> GetPharmacyByName([FromRoute] string name)
+        public IActionResult GetPharmacyByName([FromRoute] string name)
         {
             if (!string.IsNullOrEmpty(name))
             {
@@ -45,11 +45,7 @@ namespace PharmacySearch.Controllers
                 return Ok(_mapper.GetPharmacyDto(pharmacy));
             }
 
-            var pharmacyNotFound = await _context.Pharmacy
-                .OrderBy(p => p.PharmacyName)
-                .ToListAsync();
-
-            return Ok(_mapper.GetPharmacyDto(pharmacyNotFound));
+            return NoContent();
         }
     }
 }

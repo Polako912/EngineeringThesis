@@ -40,5 +40,18 @@ namespace PharmacySearch.Mappers
                 OpenToDto = x.OpenTo
             }).ToList();
         }
+
+        public List<MedicineDto> GetMedicinesDto(List<Medicine> medicine)
+        {
+            return medicine?.Select(x => new MedicineDto
+            {
+                MedicineDtoName = x.MedicineName,
+                MedicineDtoFullName = x.MedicineFullName,
+                MedicineDtoType = x.MedicineType,
+                MedicineDtoCapacity = x.MedicineCapacity,
+                IsAvailable = x.IsAvailable,
+                Prescription = x.Prescription
+            }).ToList();
+        }
     }
 }

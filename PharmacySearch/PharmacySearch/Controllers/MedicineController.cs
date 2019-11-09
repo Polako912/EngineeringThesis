@@ -36,7 +36,7 @@ namespace PharmacySearch.Controllers
         }
 
         [HttpGet("{name}")]
-        public async Task<IActionResult> GetMedicineByName([FromRoute] string name)
+        public IActionResult GetMedicineByName([FromRoute] string name)
         {
             if (!string.IsNullOrEmpty(name))
             {
@@ -49,11 +49,24 @@ namespace PharmacySearch.Controllers
                 return Ok(_mapper.GetMedicineDto(medicine));
             }
 
-            var medicineNotFound = await _context.Medicine
-                .OrderBy(m => m.MedicineName)
-                .ToListAsync();
+            return NoContent();
+        }
 
-            return Ok(_mapper.GetMedicineDto(medicineNotFound));
+        [HttpGet("{parameter}/find")]
+        public IActionResult GetAnyMedicine([FromRoute] string parameter)
+        {
+            if (!string.IsNullOrEmpty(parameter))
+            {
+                var medicine = _context.Medicine
+                    .Select(m => m)
+                    .Where(m => m.MedicineName.Contains(parameter) || m.MedicineType.Contains(parameter) ||
+                                m.MedicineFullName.Contains(parameter))
+                    .ToList();
+
+                return Ok(_mapper.GetMedicinesDto(medicine));
+            }
+
+            return NoContent();
         }
     }
 }
