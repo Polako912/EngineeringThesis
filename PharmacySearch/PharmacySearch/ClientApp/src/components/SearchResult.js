@@ -12,7 +12,7 @@ const columnsPharmacies = [
     { title: 'OpenTo', dataIndex: 'openTo', key: 'openTo' },
 ];
 
-export default class SearchPage extends React.Component {
+export default class SearchResult extends React.Component {
     constructor(props) {
         super(props)
         this.state = {

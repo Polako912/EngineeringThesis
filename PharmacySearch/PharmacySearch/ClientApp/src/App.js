@@ -2,17 +2,15 @@ import React from 'react';
 import { Route } from 'react-router';
 import Layout from './components/Layout';
 import Home from './components/Home';
-import Counter from './components/Counter';
-import FetchData from './components/FetchData';
-import Search from './components/Search';
-import SearchPage from './components/SearchResult';
+import SearchResult from './components/SearchResult';
+import MedicineSearch from './components/MedicineSearch/MedicineSearch';
+import PharamcySearch from './components/PharmacySearch/PharmacySearch';
 
 export default () => (
   <Layout>
     <Route exact path='/' component={Home} />
-    <Route path='/counter' component={Counter} />
-    <Route path='/fetch-data/:startDateIndex?' component={FetchData} />
-    <Route path='/search' component={Search} />
-    <Route path='/searchPage' component={SearchPage} />
+    <Route path='/medicineSearch' component={MedicineSearch} />
+    <Route path='/pharmacySearch' component={PharamcySearch} />
+    <Route path='/searchPage' component={SearchResult} />
   </Layout>
 );
