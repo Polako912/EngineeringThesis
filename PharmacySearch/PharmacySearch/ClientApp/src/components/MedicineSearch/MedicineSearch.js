@@ -14,7 +14,7 @@ export default class MedicineSearch extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            searchValue: '',
+            medicine: '',
         };
 
         this.handleChangeSearchValue = this.handleChangeSearchValue.bind(this);
@@ -33,15 +33,15 @@ export default class MedicineSearch extends React.Component {
     onChange = e => {
         const { value } = e.target;
         this.setState({
-            searchValue: value
+            medicine: value
         });
     }
 
     handleSearch = () => {
-        localStorage.removeItem('searchValue')
-        if (this.state.searchValue != '') {
-            localStorage.setItem('searchValue', this.state.searchValue)
-            window.location.href = 'https://localhost:44399/searchPage'
+        localStorage.removeItem('medicine')
+        if (this.state.medicine != '') {
+            localStorage.setItem('medicine', this.state.medicine)
+            window.location.href = 'https://localhost:44399/medicineResult'
         }
         else {
             message.info("Input is empty")
