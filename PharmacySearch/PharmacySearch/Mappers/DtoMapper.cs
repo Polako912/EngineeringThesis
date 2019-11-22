@@ -15,8 +15,11 @@ namespace PharmacySearch.Mappers
                 MedicineDtoFullName = x.MedicineFullName,
                 MedicineDtoType = x.MedicineType,
                 MedicineDtoCapacity = x.MedicineCapacity,
-                IsAvailable = x.IsAvailable,
-                Prescription = x.Prescription,
+                PrescriptionDto = x.Prescription,
+                ExpireTimeDto = x.ExpireTime,
+                WhenToUseDto = x.WhenToUse,
+                UsageDto = x.Usage,
+                MedicineDtoDescription = x.MedicineDescription,
                 PharmaciesDto = x.Pharmacies.Select(p => new PharmacyDto
                 {
                     PharmacyDtoName = p.PharmacyName,
@@ -49,8 +52,11 @@ namespace PharmacySearch.Mappers
                 MedicineDtoFullName = x.MedicineFullName,
                 MedicineDtoType = x.MedicineType,
                 MedicineDtoCapacity = x.MedicineCapacity,
-                IsAvailable = x.IsAvailable,
-                Prescription = x.Prescription
+                PrescriptionDto = x.Prescription,
+                ExpireTimeDto = x.ExpireTime,
+                WhenToUseDto = x.WhenToUse,
+                UsageDto = x.Usage,
+                MedicineDtoDescription = x.MedicineDescription
             }).ToList();
         }
     }

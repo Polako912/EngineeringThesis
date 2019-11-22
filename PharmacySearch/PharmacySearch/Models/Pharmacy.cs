@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace PharmacySearch.Models
 {
@@ -10,7 +9,7 @@ namespace PharmacySearch.Models
         public string PharmacyCity { get; set; }
         public TimeSpan? OpenFrom { get; set; }
         public TimeSpan? OpenTo { get; set; }
-        public int FkMedicineId { get; set; }
+        public int? FkMedicineId { get; set; }
         public string PharmacyAddress { get; set; }
 
         public virtual Medicine FkMedicine { get; set; }

@@ -22,7 +22,7 @@ export default class MedicineResult extends React.Component {
     };
 
     componentDidMount() {
-        axios.get('https://localhost:44399/api/medicine/' + localStorage.getItem('medicine') + '/find',
+        axios.get('https://localhost:44399/api/medicine/=' + localStorage.getItem('medicine'),
             {
                 headers: {
                     'Content-Type': 'application/json'

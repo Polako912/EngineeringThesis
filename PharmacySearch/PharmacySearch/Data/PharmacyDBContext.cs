@@ -14,8 +14,17 @@ namespace PharmacySearch.Data
         {
         }
 
-        public DbSet<Medicine> Medicine { get; set; }
-        public DbSet<Pharmacy> Pharmacy { get; set; }
+        public virtual DbSet<Medicine> Medicine { get; set; }
+        public virtual DbSet<Pharmacy> Pharmacy { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseSqlServer("server=desktop-5i6c7po\\sqlexpress;database=PharmacyDB;Trusted_Connection=True;");
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -27,28 +36,40 @@ namespace PharmacySearch.Data
                     .HasColumnName("MedicineID")
                     .ValueGeneratedNever();
 
-                entity.Property(e => e.IsAvailable)
-                    .HasMaxLength(5)
+                entity.Property(e => e.ExpireTime)
+                    .HasMaxLength(20)
                     .IsUnicode(false);
 
                 entity.Property(e => e.MedicineCapacity)
-                    .HasMaxLength(10)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.MedicineDescription)
+                    .HasMaxLength(500)
                     .IsUnicode(false);
 
                 entity.Property(e => e.MedicineFullName)
-                    .HasMaxLength(50)
+                    .HasMaxLength(100)
                     .IsUnicode(false);
 
                 entity.Property(e => e.MedicineName)
-                    .HasMaxLength(30)
+                    .HasMaxLength(100)
                     .IsUnicode(false);
 
                 entity.Property(e => e.MedicineType)
-                    .HasMaxLength(30)
+                    .HasMaxLength(100)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Prescription)
                     .HasMaxLength(5)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Usage)
+                    .HasMaxLength(500)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.WhenToUse)
+                    .HasMaxLength(400)
                     .IsUnicode(false);
             });
 
@@ -73,7 +94,7 @@ namespace PharmacySearch.Data
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.FkMedicine)
-                    .WithMany(p => p.Pharmacies)
+                    .WithMany(p => p.Pharmacy)
                     .HasForeignKey(d => d.FkMedicineId)
                     .HasConstraintName("FK__Pharmacy__Fk_Med__5DCAEF64");
             });

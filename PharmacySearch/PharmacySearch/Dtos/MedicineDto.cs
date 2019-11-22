@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.ResponseCompression;
-using PharmacySearch.Models;
 
 namespace PharmacySearch.Dtos
 {
@@ -10,8 +8,11 @@ namespace PharmacySearch.Dtos
         public string MedicineDtoFullName { get; set; }
         public string MedicineDtoType  { get; set; }
         public string MedicineDtoCapacity { get; set; }
-        public string Prescription { get; set; }
-        public string IsAvailable { get; set; }
+        public string PrescriptionDto { get; set; }
+        public string ExpireTimeDto { get; set; }
+        public string WhenToUseDto { get; set; }
+        public string UsageDto { get; set; }
+        public string MedicineDtoDescription { get; set; }
         public IEnumerable<PharmacyDto> PharmaciesDto { get; set; }
     }
 }

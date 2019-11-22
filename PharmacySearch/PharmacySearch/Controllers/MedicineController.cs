@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using PharmacySearch.Data;
 using PharmacySearch.Mappers;
-using PharmacySearch.Models;
 
 namespace PharmacySearch.Controllers
 {
@@ -52,7 +47,7 @@ namespace PharmacySearch.Controllers
             return NoContent();
         }
 
-        [HttpGet("{parameter}/find")]
+        [HttpGet("={parameter}")]
         public IActionResult GetAnyMedicine([FromRoute] string parameter)
         {
             if (!string.IsNullOrEmpty(parameter))
