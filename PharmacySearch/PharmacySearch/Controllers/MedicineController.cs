@@ -40,14 +40,18 @@ namespace PharmacySearch.Controllers
                     .Where(m => m.MedicineName.Contains(name) && m.Pharmacies.Any(x => x.FkMedicineId == m.MedicineId))
                     .Include(m => m.Pharmacies)
                     .ToList();
+                if (medicine.Count != 0)
+                {
+                    return Ok(_mapper.GetMedicineDto(medicine));
+                }
 
-                return Ok(_mapper.GetMedicineDto(medicine));
+                return NotFound();
             }
 
-            return NoContent();
+            return NotFound();
         }
 
-        [HttpGet("={parameter}")]
+        [HttpGet("{parameter}/find")]
         public IActionResult GetAnyMedicine([FromRoute] string parameter)
         {
             if (!string.IsNullOrEmpty(parameter))
@@ -58,10 +62,15 @@ namespace PharmacySearch.Controllers
                                 m.MedicineFullName.Contains(parameter))
                     .ToList();
 
-                return Ok(_mapper.GetMedicinesDto(medicine));
+                if (medicine.Count != 0)
+                {
+                    return Ok(_mapper.GetMedicinesDto(medicine));
+                }
+
+                return NotFound();
             }
 
-            return NoContent();
+            return NotFound();
         }
     }
 }

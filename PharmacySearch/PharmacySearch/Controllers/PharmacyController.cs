@@ -28,7 +28,12 @@ namespace PharmacySearch.Controllers
                 .OrderBy(p => p.PharmacyName)
                 .ToListAsync();
 
-            return Ok(_mapper.GetPharmacyDto(pharmacies));
+            if (pharmacies.Count!=0)
+            {
+                return Ok(_mapper.GetPharmacyDto(pharmacies));
+            }
+
+            return NotFound();
         }
 
         [HttpGet("{name}")]
@@ -41,10 +46,15 @@ namespace PharmacySearch.Controllers
                     .Where(p => p.PharmacyName.Contains(name))
                     .ToList();
 
-                return Ok(_mapper.GetPharmacyDto(pharmacy).DistinctBy(x => x.PharmacyDtoName));
+                if (pharmacy.Count != 0)
+                {
+                    return Ok(_mapper.GetPharmacyDto(pharmacy).DistinctBy(x => x.PharmacyDtoName));
+                }
+
+                return NotFound();
             }
 
-            return NoContent();
+            return NotFound();
         }
     }
 }

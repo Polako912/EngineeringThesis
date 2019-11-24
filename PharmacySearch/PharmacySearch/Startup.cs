@@ -2,8 +2,10 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PharmacySearch.Data;
 using PharmacySearch.Mappers;
 
 namespace PharmacySearch
@@ -22,10 +24,10 @@ namespace PharmacySearch
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            //services.AddDbContext<PharmacyDBContext>(options =>
-            //{
-            //    options.UseSqlServer(Configuration.GetConnectionString("PharmacyDB"));
-            //});
+            services.AddDbContext<PharmacyDBContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("PharmacyDB"));
+            });
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

@@ -4,6 +4,8 @@ import React from 'react';
 import 'antd/lib/table/style/css';
 import 'antd/lib/input/style/css';
 import 'antd/lib/descriptions/style/css';
+import { notification } from 'antd';
+import 'antd/lib/notification/style/css';
 
 const columnsPharmacies = [
     { title: 'Name', dataIndex: 'name', key: 'name' },
@@ -11,6 +13,17 @@ const columnsPharmacies = [
     { title: 'OpenFrom', dataIndex: 'openFrom', key: 'openFrom' },
     { title: 'OpenTo', dataIndex: 'openTo', key: 'openTo' },
 ];
+
+const openNotification = () => {
+    notification.open({
+        message: 'Not Found',
+        description:
+            'No contnet found for given search value',
+        onClose: () => {
+            window.location.href = 'https://localhost:44399/pharmacySearch'
+        },
+    });
+};
 
 export default class PharmacyResult extends React.Component {
     constructor(props) {
@@ -33,6 +46,7 @@ export default class PharmacyResult extends React.Component {
             })
             .catch((error) => {
                 console.log(error);
+                openNotification();
             });
     }
 

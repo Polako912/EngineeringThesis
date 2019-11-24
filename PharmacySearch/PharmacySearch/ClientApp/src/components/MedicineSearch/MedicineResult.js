@@ -4,6 +4,8 @@ import React from 'react';
 import 'antd/lib/table/style/css';
 import 'antd/lib/input/style/css';
 import 'antd/lib/descriptions/style/css';
+import { notification } from 'antd';
+import 'antd/lib/notification/style/css';
 
 const columnsMedicine = [
     { title: 'Name', dataIndex: 'name', key: 'name' },
@@ -12,6 +14,17 @@ const columnsMedicine = [
     { title: 'Capacity', dataIndex: 'capacity', key: 'capacity' },
     { title: 'Prescription', dataIndex: 'prescription', key: 'prescription' },
 ];
+
+const openNotification = () => {
+    notification.open({
+        message: 'Not Found',
+        description:
+            'No contnet found for given search value',
+        onClose: () => {
+            window.location.href = 'https://localhost:44399/medicineSearch'
+        },
+    });
+};
 
 export default class MedicineResult extends React.Component {
     constructor(props) {
@@ -22,7 +35,7 @@ export default class MedicineResult extends React.Component {
     };
 
     componentDidMount() {
-        axios.get('https://localhost:44399/api/medicine/=' + localStorage.getItem('medicine'),
+        axios.get('https://localhost:44399/api/medicine/' + localStorage.getItem('medicine') + '/find',
             {
                 headers: {
                     'Content-Type': 'application/json'
@@ -34,6 +47,7 @@ export default class MedicineResult extends React.Component {
             })
             .catch((error) => {
                 console.log(error);
+                openNotification();
             });
     }
 

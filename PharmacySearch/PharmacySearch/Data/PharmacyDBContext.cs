@@ -17,15 +17,6 @@ namespace PharmacySearch.Data
         public virtual DbSet<Medicine> Medicine { get; set; }
         public virtual DbSet<Pharmacy> Pharmacy { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("server=desktop-5i6c7po\\sqlexpress;database=PharmacyDB;Trusted_Connection=True;");
-            }
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("ProductVersion", "2.2.6-servicing-10079");
@@ -94,7 +85,7 @@ namespace PharmacySearch.Data
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.FkMedicine)
-                    .WithMany(p => p.Pharmacy)
+                    .WithMany(p => p.Pharmacies)
                     .HasForeignKey(d => d.FkMedicineId)
                     .HasConstraintName("FK__Pharmacy__Fk_Med__5DCAEF64");
             });
