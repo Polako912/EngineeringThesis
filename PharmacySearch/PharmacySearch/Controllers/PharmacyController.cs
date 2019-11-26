@@ -48,7 +48,7 @@ namespace PharmacySearch.Controllers
 
                 if (pharmacy.Count != 0)
                 {
-                    return Ok(_mapper.GetPharmacyDto(pharmacy).DistinctBy(x => x.PharmacyDtoName));
+                    return Ok(_mapper.GetPharmacyDto(pharmacy).DistinctBy(x => x.PharmacyDtoAddress));
                 }
 
                 return NotFound();

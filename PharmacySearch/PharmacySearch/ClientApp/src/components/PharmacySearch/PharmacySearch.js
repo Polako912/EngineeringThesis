@@ -44,7 +44,7 @@ export default class PharmacySearch extends React.Component {
             window.location.href = 'https://localhost:44399/pharmacyResult'
         }
         else {
-            message.info("Input is empty")
+            message.info("Wyszukiwana fraza nie może być pusta")
         }
     }
 

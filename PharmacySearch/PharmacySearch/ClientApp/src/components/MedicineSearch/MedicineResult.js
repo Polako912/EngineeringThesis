@@ -21,9 +21,9 @@ const columnsMedicine = [
 
 const openNotification = () => {
     notification.open({
-        message: 'Not Found',
+        message: 'Nie znaleziono',
         description:
-            'No contnet found for given search value',
+            'Nie znaleziono danych dla podanej frazy',
         onClose: () => {
             window.location.href = 'https://localhost:44399/medicineSearch'
         },

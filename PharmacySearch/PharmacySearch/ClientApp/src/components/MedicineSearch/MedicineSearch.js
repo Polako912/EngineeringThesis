@@ -44,7 +44,7 @@ export default class MedicineSearch extends React.Component {
             window.location.href = 'https://localhost:44399/medicineResult'
         }
         else {
-            message.info("Input is empty")
+            message.info("Wyszukiwana fraza nie może być pusta")
         }
     }
 
