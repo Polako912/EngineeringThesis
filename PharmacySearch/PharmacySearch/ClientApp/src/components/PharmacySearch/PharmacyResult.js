@@ -8,10 +8,11 @@ import { notification } from 'antd';
 import 'antd/lib/notification/style/css';
 
 const columnsPharmacies = [
-    { title: 'Name', dataIndex: 'name', key: 'name' },
-    { title: 'City', dataIndex: 'city', key: 'city' },
-    { title: 'OpenFrom', dataIndex: 'openFrom', key: 'openFrom' },
-    { title: 'OpenTo', dataIndex: 'openTo', key: 'openTo' },
+    { title: 'Nazwa Apteki', dataIndex: 'name', key: 'name' },
+    { title: 'Miasto', dataIndex: 'city', key: 'city' },
+    { title: 'Otwrta od', dataIndex: 'openFrom', key: 'openFrom' },
+    { title: 'Otwarta do', dataIndex: 'openTo', key: 'openTo' },
+    { title: 'Adres apteki', dataIndex: 'address', key: 'address' }
 ];
 
 const openNotification = () => {
@@ -57,13 +58,13 @@ export default class PharmacyResult extends React.Component {
             address: p.pharmacyDtoAddress,
             city: p.pharmacyDtoCity,
             openFrom: p.openFromDto,
-            openTo: p.openToDto
+            openTo: p.openToDto,
+            addres: p.pharmacyDtoAddress
         }));
         return (
             <div>
                 <Table
                     columns={columnsPharmacies}
-                    expandedRowRender={record => <p style={{ margin: 0 }}>{record.address}</p>}
                     dataSource={pharmacyData}
                 />
             </div >

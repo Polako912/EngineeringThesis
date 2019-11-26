@@ -54,8 +54,8 @@ export default class MedicineSearch extends React.Component {
                 <Layout>
                     <content>
                         <Search
-                            placeholder="input search text"
-                            enterButton="Search"
+                            placeholder="wpisz nazwę leku..."
+                            enterButton="Szukaj"
                             size="large"
                             style={{ width: 700 }}
                             onChange={(e) => {
@@ -66,7 +66,7 @@ export default class MedicineSearch extends React.Component {
                     </content>
                     <Footer style={{ marginTop: '20px' }}>
                         <Descriptions >
-                            <Descriptions.Item> Input name of medicine you want to search for and get details about it </Descriptions.Item>
+                            <Descriptions.Item>Wpisz nazwę leku, na temat którego chcesz znaleźć informacje</Descriptions.Item>
                         </Descriptions>
                     </Footer>
                 </Layout>

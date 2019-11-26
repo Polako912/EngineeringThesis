@@ -8,10 +8,11 @@ import { notification } from 'antd';
 import 'antd/lib/notification/style/css';
 
 const columnsPharmacies = [
-    { title: 'Name', dataIndex: 'name', key: 'name' },
-    { title: 'City', dataIndex: 'city', key: 'city' },
-    { title: 'OpenFrom', dataIndex: 'openFrom', key: 'openFrom' },
-    { title: 'OpenTo', dataIndex: 'openTo', key: 'openTo' },
+    { title: 'Nazwa Apteki', dataIndex: 'name', key: 'name' },
+    { title: 'Miasto', dataIndex: 'city', key: 'city' },
+    { title: 'Otwrta od', dataIndex: 'openFrom', key: 'openFrom' },
+    { title: 'Otwarta do', dataIndex: 'openTo', key: 'openTo' },
+    { title: 'Adres apteki', dataIndex: 'address', key: 'address' }
 ];
 
 const openNotification = () => {
@@ -61,30 +62,31 @@ export default class SearchResult extends React.Component {
             address: p.pharmacyDtoAddress,
             city: p.pharmacyDtoCity,
             openFrom: p.openFromDto,
-            openTo: p.openToDto
+            openTo: p.openToDto,
+            addres: p.pharmacyDtoAddress
         }));
         return (
             <div>
-                <Descriptions title="Medicine Info">
+                <Descriptions bordered title="Informacje o leku" size='default'>
                     {medicine.map(row => (
-                        <Descriptions.Item label="Name">{row.medicineDtoName}</Descriptions.Item>
+                        <Descriptions.Item label="Nazwa">{row.medicineDtoName}</Descriptions.Item>
                     ))}
                     {medicine.map(row => (
-                        <Descriptions.Item label="Full Name">{row.medicineDtoFullName}</Descriptions.Item>
+                        <Descriptions.Item label="Pełna nazwa">{row.medicineDtoFullName}</Descriptions.Item>
                     ))}
                     {medicine.map(row => (
-                        <Descriptions.Item label="Capacity">{row.medicineDtoCapacity}</Descriptions.Item>
+                        <Descriptions.Item label="Pojemność opakowania">{row.medicineDtoCapacity}</Descriptions.Item>
                     ))}
                     {medicine.map(row => (
-                        <Descriptions.Item label="Type">{row.medicineDtoType}</Descriptions.Item>
+                        <Descriptions.Item label="Rodzaj">{row.medicineDtoType}</Descriptions.Item>
                     ))}
                     {medicine.map(row => (
-                        <Descriptions.Item label="Prescription">{row.prescription}</Descriptions.Item>
+                        <Descriptions.Item label="Data ważności">{row.expireTimeDto}</Descriptions.Item>
                     ))}
                 </Descriptions>
+                <h5>Dostępny w aptekach:</h5>
                 <Table
                     columns={columnsPharmacies}
-                    expandedRowRender={record => <p style={{ margin: 0 }}>{record.address}</p>}
                     dataSource={pharmacyData}
                 />
             </div >

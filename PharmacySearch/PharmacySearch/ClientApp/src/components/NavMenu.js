@@ -22,15 +22,15 @@ export default class NavMenu extends React.Component {
       <header>
         <Navbar className="navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3" light color='light' >
           <Container>
-            <NavbarBrand tag={Link} to="/">Search for medicines in pharmacies netowork</NavbarBrand>
+            <NavbarBrand tag={Link} to="/">Wyszukiwarka leków w sieci aptek</NavbarBrand>
             <NavbarToggler onClick={this.toggle} className="mr-2" />
             <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={this.state.isOpen} navbar>
               <ul className="navbar-nav flex-grow">
                 <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/medicineSearch">Find Medicine</NavLink>
+                  <NavLink tag={Link} className="text-dark" to="/medicineSearch">Znajdź lek</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/pharmacySearch">Find Pharmacy</NavLink>
+                  <NavLink tag={Link} className="text-dark" to="/pharmacySearch">Znajdź aptekę</NavLink>
                 </NavItem>
               </ul>
             </Collapse>

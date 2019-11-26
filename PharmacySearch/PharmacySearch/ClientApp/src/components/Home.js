@@ -54,8 +54,8 @@ export default class Home extends React.Component {
         <Layout>
           <content>
             <Search
-              placeholder="input search text"
-              enterButton="Search"
+              placeholder="wpisz nazwę leku..."
+              enterButton="Szukaj"
               size="large"
               style={{ width: 700 }}
               onChange={(e) => {
@@ -66,7 +66,7 @@ export default class Home extends React.Component {
           </content>
           <Footer style={{ marginTop: '20px' }}>
             <Descriptions >
-              <Descriptions.Item> Input name of medicine you want to search for in pharmacies network </Descriptions.Item>
+              <Descriptions.Item> Wprowadź nazwę leku, którego chcesz wyszukać w sieci aptek </Descriptions.Item>
             </Descriptions>
           </Footer>
         </Layout>

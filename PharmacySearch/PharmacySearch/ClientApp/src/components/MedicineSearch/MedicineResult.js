@@ -8,11 +8,15 @@ import { notification } from 'antd';
 import 'antd/lib/notification/style/css';
 
 const columnsMedicine = [
-    { title: 'Name', dataIndex: 'name', key: 'name' },
-    { title: 'Full Name', dataIndex: 'fullName', key: 'fullName' },
-    { title: 'Type', dataIndex: 'type', key: 'type' },
-    { title: 'Capacity', dataIndex: 'capacity', key: 'capacity' },
-    { title: 'Prescription', dataIndex: 'prescription', key: 'prescription' },
+    { title: 'Nazwa leku', dataIndex: 'name', key: 'name' },
+    { title: 'Pełna nazwa', dataIndex: 'fullName', key: 'fullName' },
+    { title: 'Rodzaj', dataIndex: 'type', key: 'type' },
+    { title: 'Pojemność opakowania', dataIndex: 'capacity', key: 'capacity' },
+    { title: 'Data ważności', dataIndex: 'expireDate', key: 'expireDate' },
+    { title: 'Czy na receptę', dataIndex: 'prescription', key: 'prescription' },
+    { title: 'Kiedy stosować', dataIndex: 'whenToUse', key: 'whenToUse' },
+    { title: 'Dawkowanie', dataIndex: 'usage', key: 'usage' },
+    { title: 'Dodatkowe infroamcje', dataIndex: 'medicineDescription', key: 'medicineDescription' }
 ];
 
 const openNotification = () => {
@@ -58,13 +62,16 @@ export default class MedicineResult extends React.Component {
             fullName: m.medicineDtoFullName,
             type: m.medicineDtoType,
             capacity: m.medicineDtoCapacity,
-            prescription: m.prescription
+            prescription: m.prescriptionDto,
+            expireDate: m.expireTimeDto,
+            whenToUse: m.whenToUseDto,
+            usage: m.usageDto,
+            medicineDescription: m.medicineDtoDescription
         }));
         return (
             <div>
                 <Table
                     columns={columnsMedicine}
-                    expandedRowRender={record => <p style={{ margin: 0 }}>{record.address}</p>}
                     dataSource={medicineData}
                 />
             </div >
